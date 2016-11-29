@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		list-style:none;
+	}
+	#app{
+		padding:100px;
+	}
+	#app #uls li{
+		display:inline-block;
+	}
+</style>
+<body>
+	<div id="app">
+		<h1>Latest Vue.js Commits</h1>
+		<ul id="uls">
+			<li v-for="item in langer">
+				<input type="radio" name="radio" :id="$index" :value="item" v-model="check">
+				<label :for="$index">
+					{{item}}
+				</label>
+			</li>
+		</ul>
+		<p>vuejs/@vue  {{check}}</p>
+		<ul>
+			<li v-for="item in langerArr">
+				<h2>{{item.sha.slice(0,7)}}</h2> - 
+				<span>
+					{{item.commit.message |truncate}}
+				</span>
+				<p>{{item.commit.author.date |dateFormat}}</p>
+			</li>
+		</ul>
+	</div>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/demo.js"></script>
+</html>
